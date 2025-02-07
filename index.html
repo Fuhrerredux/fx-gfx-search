@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Führerreich GFX Viewer</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/jomini@0.8.0/dist/umd/index.min.js"></script>
+  <header>
+    <h1>Führerreich GFX Viewer</h1>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search icons..." />
+      </button>
+    </div>
+  </header>
+
+  <section class="folder-controls">
+    <h2>Folders</h2>
+    <div id="folder-buttons"></div>
+  </section>
+
+  <main>
+    <div id="images"></div>
+  </main>
+
+  <footer>
+    <p>Created by <a href="https://www.github.com/Thanasis09">Thanasis Lanaras</a> &copy; 2025</p>
+    <p>Inspired by <a href="https://yard1.github.io/HoI4-GFX-Search/" class="text-indigo-400 hover:underline">Yard1's HoI4 GFX Search</a></p>
+  </footer>
+
+  <!-- Modal for viewing an image -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="modal-close" class="close">&times;</span>
+      <div class="modal-body">
+        <div class="modal-image">
+          <img id="modal-img" src="" alt="Preview" />
+        </div>
+        <div class="modal-info">
+          <h3 id="modal-img-name"></h3>
+          <div class="meta-grid">
+            <div class="meta-item">
+              <label>File Path:</label>
+              <span id="modal-file-path" class="monospace"></span>
+            </div>
+            <div class="meta-item">
+              <label>Dimensions:</label>
+              <span id="modal-dimensions"></span>
+            </div>
+            <div class="meta-item">
+              <label>Sprite Name:</label>
+              <span id="modal-sprite-name" class="monospace"></span>
+            </div>
+          </div>
+          <button class="copy-button" onclick="copySpriteName()">
+            <svg width="16" height="16" viewBox="0 0 24 24">
+              <path d="M8 4v12h12V4H8zM6 2h16v16H6V2zm4 18H4V6h2v12h4v2z"/>
+            </svg>
+            Copy Sprite Name
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <svg id="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+    <svg id="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3"/>
+      <line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/>
+      <line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+  </div>
+
+  <div class="toast" id="toast">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M20 6L9 17l-5-5"></path>
+    </svg>
+    <span id="toast-message"></span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
